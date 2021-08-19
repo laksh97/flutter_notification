@@ -67,14 +67,44 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () => Navigator.pop(context),
                 child: Text(
                   "Yes",
-                  style: TextStyle(color: Colors.green),
+                  style: TextStyle(
+                      color: Colors.green, fontWeight: FontWeight.bold),
                 ),
               ),
               TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(
                   "No",
-                  style: TextStyle(color: Colors.green),
+                  style: TextStyle(
+                      color: Colors.green, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
+  void _showSimpleDialog(String text) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: Text(text),
+            children: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "Yes",
+                  style: TextStyle(
+                      color: Colors.green, fontWeight: FontWeight.bold),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "No",
+                  style: TextStyle(
+                      color: Colors.green, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -89,48 +119,75 @@ class _MyAppState extends State<MyApp> {
         title: Text("Flutter Notifications"),
         backgroundColor: Colors.green,
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            children: [
-              Text(
-                "Hello world!",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-              ),
-              SizedBox(
-                height: 20,
-                width: 20,
-              ),
-              ElevatedButton(
-                onPressed: _showBottomSheet,
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Center(
+            child: Column(
+              children: [
+                Text(
+                  "Hello world!",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                 ),
-                child: Text("Click here for Bottom Sheet!"),
-              ),
-              SizedBox(
-                height: 20,
-                width: 20,
-              ),
-              ElevatedButton(
-                onPressed: _showSnackBar,
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                SizedBox(
+                  height: 20,
+                  width: 20,
                 ),
-                child: Text("Click here for Snack Bar!"),
-              ),
-              SizedBox(
-                height: 20,
-                width: 20,
-              ),
-              ElevatedButton(
-                onPressed: () => _showAlertDialog("Do you like Flutter?"),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                ElevatedButton(
+                  onPressed: _showBottomSheet,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
+                  child: Text(
+                    "Click here for Bottom Sheet!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
-                child: Text("Click here for Alert Dialog!"),
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: _showSnackBar,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
+                  child: Text(
+                    "Click here for Snack Bar!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      _showAlertDialog("Do you really want to close the app?"),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
+                  child: Text(
+                    "Click here for Alert Dialog!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      _showSimpleDialog("Do you love Flutter Widgets?"),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
+                  child: Text(
+                    "Click here for Simple Dialog!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
