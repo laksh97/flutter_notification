@@ -43,6 +43,19 @@ class _MyAppState extends State<MyApp> {
         });
   }
 
+  void _showSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Hello World!",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,12 +71,27 @@ class _MyAppState extends State<MyApp> {
                 "Hello world!",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
+              SizedBox(
+                height: 20,
+                width: 20,
+              ),
               ElevatedButton(
                 onPressed: _showBottomSheet,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
                 ),
-                child: Text("Click me!"),
+                child: Text("Click here for Bottom Sheet!"),
+              ),
+              SizedBox(
+                height: 20,
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: _showSnackBar,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                ),
+                child: Text("Click here for Snack Bar!"),
               ),
             ],
           ),
