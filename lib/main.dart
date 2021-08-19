@@ -56,6 +56,32 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void _showAlertDialog(String text) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(text),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "Yes",
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "No",
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +118,17 @@ class _MyAppState extends State<MyApp> {
                   backgroundColor: MaterialStateProperty.all(Colors.green),
                 ),
                 child: Text("Click here for Snack Bar!"),
+              ),
+              SizedBox(
+                height: 20,
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: () => _showAlertDialog("Do you like Flutter?"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                ),
+                child: Text("Click here for Alert Dialog!"),
               ),
             ],
           ),
